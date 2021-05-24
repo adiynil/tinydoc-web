@@ -1,0 +1,134 @@
+@import "@/assets/css/global.scss";
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+.container {
+	.sidebar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 250px;
+		height: 100%;
+		background-color: $background;
+		ul {
+			border: none;
+		}
+		.logo {
+			padding: 20px;
+			a {
+				font-size: 30px;
+				font-weight: bold;
+				font-style: italic;
+				transition: color 0.5s;
+				text-decoration: none;
+				color: $theme;
+				&:hover {
+					color: rgb(103, 194, 58, 0.8);
+				}
+			}
+		}
+		.el-menu {
+			height: 100%;
+		}
+		.search {
+			margin: 0 15px 15px;
+		}
+	}
+	.main {
+		padding: 20px;
+		padding-left: 270px;
+		text-align: left;
+		.el-row {
+			padding: 10px 20px;
+		}
+		.el-row + .el-row {
+			margin-top: 10px;
+		}
+		.feature {
+			min-height: 240px;
+			& > h1 {
+				font-size: 46px;
+			}
+			& > p {
+				font-size: 22px;
+				margin: 20px 0 50px;
+				color: $normal-text-color;
+			}
+		}
+		.login {
+			.card-body {
+				padding: 20px 0;
+				text-align: center;
+				div + div {
+					margin-top: 10px;
+				}
+			}
+		}
+		.logout {
+			.card-body {
+				ul {
+					li {
+						list-style: none;
+						&::before {
+							padding-right: 5px;
+							content: "#";
+							color: $lighter-text-color;
+						}
+						a {
+							text-decoration: none;
+							color: #66b1ff;
+						}
+					}
+					li + li {
+						margin-top: 10px;
+					}
+				}
+			}
+		}
+		.book-list {
+			.book-item {
+				min-height: 200px;
+				& > h2 {
+					font-size: 22px;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					color: #303133;
+				}
+				& > .author {
+					margin-top: 10px;
+				}
+				& > .tags {
+					margin: 10px 0;
+					span + span {
+						margin-left: 5px;
+					}
+				}
+				& > h2 > a {
+					text-decoration: none;
+
+					color: inherit;
+				}
+				& > h2 > a:hover,
+				& > h2 > a:focus,
+				& > h2 > a:active {
+					text-decoration: underline;
+					color: #00a0ff;
+				}
+				& > .description {
+					font-size: 14px;
+					display: -webkit-box;
+					overflow: hidden;
+					height: 57px;
+					margin: 15px 0;
+					color: #909399;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 3;
+				}
+			}
+		}
+	}
+}
