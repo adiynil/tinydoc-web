@@ -1,5 +1,4 @@
 import Vue from "vue";
-// import Cookie from "js-cookie";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -10,7 +9,6 @@ import "./assets/css/scrollbar.css";
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
-// Vue.prototype.$Cookie = Cookie;
 
 new Vue({
   router,

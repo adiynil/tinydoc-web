@@ -1,3 +1,6 @@
+.component {
+  padding: 0;
+}
 .layout {
   color: #666;
   text-align: left;
@@ -10,7 +13,7 @@
     right: 0;
     overflow: hidden;
     background: #fff;
-    z-index: 3;
+    z-index: 2;
     padding: 16px;
     border: 1px solid #ddd;
     border-top: none;
@@ -33,11 +36,19 @@
     padding: 0px 380px 0px 20px;
     margin: 0;
     .toggle {
+      /*
+      * 默认display:sticky依然会在文档流中占有高度
+      * 如果是向上固定(top)的话就会撑出一定的高度
+      * 这个时候只要把sticky元素的高度设为0
+      * 并且overflow设置为可视(visible)就不会在文档流占有高度
+      */
+      height: 0px;
+      overflow-y: visible;
       z-index: 2;
       float: right;
       position: -webkit-sticky;
       position: sticky;
-      top: 40px;
+      top: calc(100% - 120px);
       width: auto;
 
       div + div {

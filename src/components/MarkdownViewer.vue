@@ -1,40 +1,49 @@
 <template>
-  <div class="markdown-viewer-box">
-    <link rel="stylesheet" href="/static/editormd/css/editormd.preview.css" />
-    <link rel="stylesheet" :href="'/static/editormd/css/themes/' + themeCode" />
-    <div class="layout">
-      <div :class="tocClass" class="sidebar">
-        <h1>目录</h1>
-        <div
-          class="markdown-body editormd-preview-container toc-container"
-          id="toc-container"
-        ></div>
-      </div>
-      <div class="content" :class="viewerClass">
-        <div class="toggle">
-          <div>
-            <el-button
-              icon="el-icon-arrow-up"
-              @click="scrollToTop"
-              circle
-            ></el-button>
-          </div>
-          <div>
-            <el-button
-              icon="el-icon-tickets"
-              @click="toggle"
-              circle
-            ></el-button>
-          </div>
+  <div class="component">
+    <div class="markdown-viewer-box">
+      <link rel="stylesheet" href="/static/editormd/css/editormd.preview.css" />
+      <link
+        rel="stylesheet"
+        :href="'/static/editormd/css/themes/' + themeCode"
+      />
+      <div class="layout">
+        <div v-if="toc" :class="tocClass" class="sidebar">
+          <h1>目录</h1>
+          <div
+            class="markdown-body editormd-preview-container toc-container"
+            id="toc-container"
+          ></div>
         </div>
-        <div class="viewer" ref="viewer" :id="id"></div>
+        <div class="content" :class="viewerClass">
+          <div v-if="toc" class="toggle">
+            <div>
+              <el-button
+                icon="el-icon-arrow-up"
+                @click="scrollToTop"
+                circle
+              ></el-button>
+            </div>
+            <div>
+              <el-button
+                icon="el-icon-tickets"
+                @click="toggle"
+                circle
+              ></el-button>
+            </div>
+          </div>
+          <div class="viewer" ref="viewer" :id="id"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
 import $ from "jquery";
-import { v4 as uuid } from "uuid";
+import { customAlphabet } from "nanoid";
+let nanoid = customAlphabet(
+  "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  8
+);
 import { viewerConfig } from "../../config/editor.md";
 
 export default {
@@ -42,7 +51,7 @@ export default {
   props: {
     id: {
       type: String,
-      default: uuid(),
+      default: nanoid(),
     },
     config: {
       type: Object,
@@ -50,6 +59,10 @@ export default {
     toc: {
       type: Boolean,
       default: true,
+    },
+    tocExpand: {
+      type: Boolean,
+      default: false,
     },
     themeCode: {
       type: String,
@@ -70,10 +83,10 @@ export default {
       viewer: null,
       viewerLoaded: false,
       viewerClass: {
-        noToc: !this.toc,
+        noToc: !this.tocExpand,
       },
       tocClass: {
-        hide: !this.toc,
+        hide: !this.tocExpand,
       },
     };
   },
@@ -135,6 +148,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import "../assets/css/init.scss";
 @import "../assets/css/viewer.scss";
 </style>

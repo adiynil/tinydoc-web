@@ -1,19 +1,20 @@
 const defaultConfig = {
   width: "100%",
-  height: 400,
+  height: 450,
   path: "/static/editormd/lib/",
   // theme: "dark", // toolbar
   // previewTheme: "dark", // editor
   // editorTheme: "pastel-on-dark", // previewer
   // markdown: "默认填充内容",
-  // lineWrapping: true, // 编辑框不换行 默认true
+  // lineWrapping: false, // 编辑框不换行 默认true
   // codeFold: true, // 代码折叠
-  // placeholder: "请输入...", // default
+  placeholder: "", // default
   // syncScrolling: true, // (default)true -> bisync, false -> disabled, "single" -> Only editor area sync
   saveHTMLToTextarea: true, // 保存 HTML 到 Textarea
   toolbarAutoFixed: false, // toolbar自动吸顶
   // searchReplace: true,
-  // watch: true, // 实时预览
+  watch: false, // 实时预览
+  lineNumbers: false, // 行号显示
   // htmlDecode: "style,script,iframe|on*", // 开启 HTML 标签解析，为了安全性，默认不开启
   // toolbar: true, //工具栏
   // previewCodeHighlight: true, // 预览 HTML 的代码块高亮，默认开启
